@@ -17,6 +17,13 @@ open output_from_docker/screenshot.png
 ```sh
 pip3 install -r requirements.txt
 plotly_get_chrome -y
+
+# Get all the topology files
+mkdir topojson
+cd topojson
+
+# Download the latest version of the topology files
+curl -s https://api.github.com/repos/plotly/plotly.js/contents/dist/topojson | jq -r '.[].download_url' | xargs -n 1 curl -O
 ```
 
 ## To create the chart
