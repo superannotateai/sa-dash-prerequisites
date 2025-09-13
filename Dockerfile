@@ -12,6 +12,9 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN pip install playwright
+RUN playwright install
+
 # Download Plotly topojson files from GitHub
 RUN mkdir -p /app/topojson \
 	&& cd /app/topojson \
@@ -23,4 +26,5 @@ RUN mkdir -p /app/topojson \
 COPY . .
 
 # Run the scripts
-CMD ["/bin/bash", "-c", "python gen.py && python vis.py"]
+CMD ["/bin/bash", "-c", "python gen.py && python vis.py && python output.py"]
+
