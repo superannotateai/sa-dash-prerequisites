@@ -1,7 +1,11 @@
 jsonlines
 pandas
+numpy
 dash
 plotly
 kaleido
 faker
 scipy
+playwright
+shapely
+geojson
