@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
     output_dir = os.environ.get("DASH_OUTPUT_PATH", ".")
 
-    fig = data_visualizer(os.path.join(output_dir, "data.json"))
+    fig = data_visualizer("data.json")
 
     # Export the Plotly figure as a static HTML file
     html_path = os.path.join(output_dir, "output.html")
@@ -64,7 +64,8 @@ if __name__ == "__main__":
     from snap import map_export_html, snap_plotly_and_map
 
     # Get the rturned fig object from data_vsiualizer
-    
+    fig = data_visualizer("data.json")
+
     # Export files
     html_path = map_export_html(fig, output_dir)
     print(f"Homepage HTML exported to {html_path}")
@@ -82,7 +83,7 @@ if __name__ == "__main__":
     output_dir = os.environ.get("DASH_OUTPUT_PATH", ".")
     
     # Get the Dash app
-    app = data_visualizer(os.path.join(output_dir, "data.json"))
+    app = data_visualizer("data.json")
     
     # Export HTML
     html_path = dash_export_html(app, output_dir)
