@@ -9,3 +9,4 @@ scipy
 playwright
 shapely
 geojson
+geopandas
