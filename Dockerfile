@@ -23,6 +23,15 @@ RUN mkdir -p /app/geojson \
 		| jq -r '.[].download_url' \
 		| xargs -n 1 curl -O
 
+# Download all JSON files from eric.clst.org
+RUN mkdir -p /app/ericclst \
+    && cd /app/ericclst \
+    && curl -s https://eric.clst.org/assets/wiki/uploads/Stuff/ \
+    | grep -o '"[^"]\+\.json"' | sed 's/"//g' \
+    | while read file; do \
+        curl -O "https://eric.clst.org/assets/wiki/uploads/Stuff/$file"; \
+    done
+
 # Download GeoJSON files for data generation (offline usage)
 RUN cd /app \
     && curl -o german_districts.geo.json \
